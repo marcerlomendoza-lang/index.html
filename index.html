@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Pantalla inicial */
+/* Overlay inicial */
 #overlay {
   position: fixed;
   inset: 0;
@@ -32,21 +32,18 @@ body {
   font-size: 1.2em;
   border-radius: 40px;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
   50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
 }
 
 /* Carta */
 #card {
   opacity: 0;
-  transform: scale(0.85);
-  transition: all 1.2s ease;
+  transform: scale(0.9);
+  transition: all 1s ease;
   max-width: 750px;
   margin: 90px auto;
   background: white;
@@ -61,9 +58,7 @@ body {
   transform: scale(1);
 }
 
-h1 {
-  color: #ff5fa2;
-}
+h1 { color: #ff5fa2; }
 
 /* Galería */
 .gallery {
@@ -89,7 +84,7 @@ h1 {
 #lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: none;
   align-items: center;
   justify-content: center;
@@ -106,13 +101,10 @@ h1 {
 .heart {
   position: fixed;
   bottom: -20px;
-  font-size: 20px;
   animation: floatUp 6s linear infinite;
-  color: #ff7eb3;
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
@@ -140,12 +132,12 @@ h1 {
     Algo que puedas abrir y sentir cerquita.
   </p>
 
-  <!-- Galería -->
+  <!-- Galería con LINKS -->
   <div class="gallery">
-    <img src="sofi.png" onclick="openLightbox(this.src)">
-    <img src="sofi2.png" onclick="openLightbox(this.src)">
-    <img src="sofi3.png" onclick="openLightbox(this.src)">
-    <img src="sofi4.png" onclick="openLightbox(this.src)">
+    <img src="https://i.imgur.com/mhjlVoN.jpg" onclick="openLightbox(this.src)">
+    <img src="https://i.imgur.com/i4NoIK5.jpg" onclick="openLightbox(this.src)">
+    <img src="https://i.imgur.com/bsxWG04.jpg" onclick="openLightbox(this.src)">
+    <img src="https://i.imgur.com/7ysh6vk.jpg" onclick="openLightbox(this.src)">
   </div>
 
   <p>
@@ -163,31 +155,18 @@ h1 {
 </div>
 
 <script>
-const button = document.getElementById("openBtn");
-const overlay = document.getElementById("overlay");
-const card = document.getElementById("card");
+const btn = document.getElementById("openBtn");
 const music = document.getElementById("bgMusic");
+const card = document.getElementById("card");
+const overlay = document.getElementById("overlay");
 
-button.addEventListener("click", () => {
+btn.onclick = () => {
   music.volume = 0.5;
   music.play();
-
-  overlay.style.opacity = "0";
-  setTimeout(() => overlay.style.display = "none", 800);
+  overlay.style.display = "none";
   card.classList.add("show");
-
   setInterval(createHeart, 450);
-});
-
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.textContent = "💗";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (15 + Math.random() * 20) + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
-}
+};
 
 function openLightbox(src) {
   document.getElementById("lightboxImg").src = src;
@@ -196,6 +175,16 @@ function openLightbox(src) {
 
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
+}
+
+function createHeart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.textContent = "💗";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = (15 + Math.random() * 20) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
 }
 </script>
 
