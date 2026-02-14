@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Sofía ✨</title>
+    <style>
+        :root {
+            --rosa-claro: #ffe4ec;
+            --rosa-sofia: #ffb7c5; /* Su color favorito */
+            --rosa-fuerte: #ff4d6d;
+        }
+
+        body {
+            background-color: var(--rosa-claro);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        .carta-container {
+            position: relative;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            max-width: 500px;
+            text-align: center;
+            border: 2px solid var(--rosa-sofia);
+            z-index: 5;
+        }
+
+        /* Fotos de Roblox en las esquinas */
+        .foto-roblox {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border: 6px solid white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .foto-roblox:hover { transform: scale(1.1) rotate(0deg); z-index: 10; }
+
+        /* Ubicaciones exactas */
+        .f1 { top: -70px; left: -70px; transform: rotate(-12deg); }
+        .f2 { top: -70px; right: -70px; transform: rotate(12deg); }
+        .f3 { bottom: -70px; left: -70px; transform: rotate(8deg); }
+        .f4 { bottom: -70px; right: -70px; transform: rotate(-8deg); }
+
+        h1 { color: var(--rosa-fuerte); font-size: 2rem; margin-bottom: 15px; }
+        p { color: #4a4a4a; line-height: 1.6; font-size: 1.05rem; margin-bottom: 15px; }
+        
+        .destaque {
+            color: var(--rosa-fuerte);
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .cancion {
+            margin-top: 20px;
+            padding: 10px;
+            background: var(--rosa-claro);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--rosa-fuerte);
+        }
+
+        /* Corazones flotantes de fondo */
+        .heart {
+            position: absolute;
+            color: var(--rosa-sofia);
+            opacity: 0.5;
+            z-index: 1;
+            animation: float 6s infinite ease-in;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .foto-roblox { width: 90px; height: 90px; }
+            .f1 { top: -40px; left: -20px; }
+            .f2 { top: -40px; right: -20px; }
+            .f3 { bottom: -40px; left: -20px; }
+            .f4 { bottom: -40px; right: -20px; }
+            .carta-container { width: 80%; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carta-container">
+        <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" class="foto-roblox f1">
+        <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" class="foto-roblox f2">
+        <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" class="foto-roblox f3">
+        <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" class="foto-roblox f4">
+
+        <h1>Para: Sofía ✨</h1>
+        
+        <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla es el recordatorio de que la distancia es solo un número cuando la conexión es real.</p>
+        
+        <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
+        
+        <p class="destaque">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</p>
+        
+        <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
+        
+        <div class="cancion">
+            🎵 <i>"And every time the moon shines bright... I'll think of you."</i><br>
+            <b>Everthemoon - The Marías</b>
+        </div>
+    </div>
+
+</body>
+</html>
