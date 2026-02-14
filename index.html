@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Pantalla inicial */
+/* Pantalla de inicio */
 #overlay {
   position: fixed;
   inset: 0;
@@ -47,8 +47,8 @@ body {
   opacity: 0;
   transform: scale(0.8);
   transition: all 1.2s ease;
-  max-width: 750px;
-  margin: 60px auto;
+  max-width: 720px;
+  margin: 80px auto;
   background: white;
   padding: 40px;
   border-radius: 25px;
@@ -77,7 +77,7 @@ p {
 /* Galería */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 15px;
   margin: 30px 0;
 }
@@ -104,21 +104,15 @@ p {
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Música de fondo -->
+<!-- Música -->
 <audio id="bgMusic" loop>
   <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
 </audio>
@@ -136,21 +130,18 @@ p {
     Cariño,<br><br>
     Aunque la distancia nos separe, quería regalarte algo especial.
     Algo que puedas abrir y sentir cerquita.
-    Cada imagen aquí es un pedacito de lo que compartimos
-    y de lo que seguimos construyendo con calma y cariño.
   </p>
 
-  <!-- GALERÍA DE FOTOS -->
+  <!-- IMÁGENES -->
   <div class="gallery">
-    <img src="https://i.imgur.com/mhjlVoN.jpg" alt="Nuestro momento">
-    <img src="https://i.imgur.com/i4NoIK5.jpg" alt="Nuestro momento">
-    <img src="https://i.imgur.com/bsxWG04.jpg" alt="Nuestro momento">
-    <img src="https://i.imgur.com/7ysh6vk.jpg" alt="Nuestro momento">
+    <img src="https://i.imgur.com/mhjlVoN.jpg">
+    <img src="https://i.imgur.com/i4NoIK5.jpg">
+    <img src="https://i.imgur.com/bsxWG04.jpg">
+    <img src="https://i.imgur.com/7ysh6vk.jpg">
   </div>
 
   <p>
     Me gusta esto que tenemos, sin apuros, siendo nosotros.
-    Gracias por estar, por compartir, por existir en mi vida.
     <br><br>
     Te quiero 💗
     <br><br>
@@ -159,8 +150,8 @@ p {
 </div>
 
 <script>
-const overlay = document.getElementById("overlay");
 const button = document.getElementById("openBtn");
+const overlay = document.getElementById("overlay");
 const card = document.getElementById("card");
 const music = document.getElementById("bgMusic");
 
@@ -178,7 +169,7 @@ button.addEventListener("click", () => {
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerText = "💗";
+  heart.textContent = "💗";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (15 + Math.random() * 20) + "px";
   document.body.appendChild(heart);
