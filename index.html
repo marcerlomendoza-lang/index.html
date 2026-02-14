@@ -10,10 +10,10 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #ffd6e8, #ffeef6);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Pantalla de inicio */
+/* Pantalla inicial */
 #overlay {
   position: fixed;
   inset: 0;
@@ -47,8 +47,8 @@ body {
   opacity: 0;
   transform: scale(0.8);
   transition: all 1.2s ease;
-  max-width: 700px;
-  margin: 80px auto;
+  max-width: 750px;
+  margin: 60px auto;
   background: white;
   padding: 40px;
   border-radius: 25px;
@@ -71,6 +71,26 @@ p {
   font-size: 1.1em;
   line-height: 1.7;
   color: #555;
+  text-align: center;
+}
+
+/* Galería */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /* Corazones */
@@ -111,14 +131,25 @@ p {
 <!-- Carta -->
 <div id="card">
   <h1>Para Sofía 🌸</h1>
+
   <p>
     Cariño,<br><br>
-    Aunque la distancia nos separe, quiero que sepas que pienso en ti más de lo que imaginas.
-    Esta carta es pequeñita, pero está hecha con todo el cuidado del mundo,
-    solo para ti.
-    <br><br>
-    Me gusta lo que estamos construyendo, paso a paso, sin apuros.
-    Cada mensaje, cada risa, cada momento contigo significa mucho para mí.
+    Aunque la distancia nos separe, quería regalarte algo que puedas sentir cerquita.
+    Cada imagen aquí es un pedacito de lo que compartimos,
+    y de lo que seguimos construyendo con calma y cariño.
+  </p>
+
+  <!-- GALERÍA DE FOTOS -->
+  <div class="gallery">
+    <img src="https://i.imgur.com/mhjlVoN.jpg" alt="Nuestro momento">
+    <img src="https://i.imgur.com/i4NoIK5.jpg" alt="Nuestro momento">
+    <img src="https://i.imgur.com/bsxWG04.jpg" alt="Nuestro momento">
+    <img src="https://i.imgur.com/7ysh6vk.jpg" alt="Nuestro momento">
+  </div>
+
+  <p>
+    Me gusta esto que tenemos, sin apuros, siendo nosotros.
+    Gracias por estar, por compartir, por existir en mi vida.
     <br><br>
     Te quiero 💗
     <br><br>
@@ -133,16 +164,13 @@ const card = document.getElementById("card");
 const music = document.getElementById("bgMusic");
 
 button.addEventListener("click", () => {
-  // Música
   music.volume = 0.5;
   music.play();
 
-  // Animaciones
   overlay.style.opacity = "0";
   setTimeout(() => overlay.style.display = "none", 800);
   card.classList.add("show");
 
-  // Corazones
   setInterval(createHeart, 400);
 });
 
