@@ -17,137 +17,63 @@
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            min-height: 100vh;
+            overflow: hidden; /* Evita scrolls inesperados */
+            position: relative;
         }
 
-        /* Galería de Alta Definición */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            padding: 20px;
-            max-width: 900px;
-            margin-top: 30px;
+        /* Contenedor de la carta cerrada */
+        .card-cover {
+            position: absolute;
+            background-color: var(--rosa-sofia);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            max-width: 400px;
+            height: 60vh;
+            max-height: 500px;
         }
 
-        .foto-item {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.4s ease;
-            border: 4px solid white;
+        .card-cover h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
 
-        .foto-item:hover {
-            transform: scale(1.03);
-            z-index: 2;
+        .card-cover p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        /* Carta de Texto */
-        .carta {
+        /* Efecto de apertura */
+        .card-cover.open {
+            transform: scale(0.5) translateY(-200px); /* Se encoge y se mueve */
+            opacity: 0;
+            pointer-events: none; /* Ya no es clickeable */
+        }
+
+        /* Contenido de la carta abierta */
+        .card-content {
+            position: relative;
             background: white;
-            max-width: 600px;
-            margin: 40px 20px;
+            max-width: 800px;
+            margin: 20px;
             padding: 40px;
             border-radius: 30px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
             border: 1px solid var(--rosa-sofia);
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            color: var(--rosa-fuerte);
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: #555;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .highlight {
-            color: var(--rosa-fuerte);
-            font-weight: 600;
-            font-size: 1.2rem;
-            display: block;
-            margin: 20px 0;
-        }
-
-        .footer-music {
-            background: var(--rosa-fuerte);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            margin-top: 20px;
-            display: inline-block;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        /* Corazones flotantes decorativos */
-        .floating-heart {
-            position: fixed;
-            color: var(--rosa-sofia);
-            font-size: 20px;
-            user-select: none;
-            z-index: -1;
-            animation: move 10s linear infinite;
-        }
-
-        @keyframes move {
-            from { transform: translateY(100vh) rotate(0deg); }
-            to { transform: translateY(-10vh) rotate(360deg); }
-        }
-
-        @media (max-width: 600px) {
-            .gallery { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
-            .carta { padding: 25px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="gallery">
-        <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" alt="Recuerdo 1" class="foto-item">
-        <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" alt="Recuerdo 2" class="foto-item">
-        <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" alt="Recuerdo 3" class="foto-item">
-        <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" alt="Recuerdo 4" class="foto-item">
-    </div>
-
-    <div class="carta">
-        <h1>Para Sofía ✨</h1>
-        <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla me recuerda que la distancia es solo un número cuando la conexión es real.</p>
-        
-        <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
-        
-        <span class="highlight">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</span>
-        
-        <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
-        
-        <div class="footer-music">
-            🎵 Everthemoon - The Marías
-        </div>
-    </div>
-
-    <script>
-        // Crear corazones animados
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
-            heart.style.opacity = Math.random();
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 10000);
-        }
-        setInterval(createHeart, 500);
-    </script>
-</body>
-</html>
+            opacity: 0; /* Empieza oculto */
+            transform: scale(0.8
