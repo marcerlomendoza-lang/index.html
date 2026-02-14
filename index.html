@@ -3,113 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Sofía | San Valentín ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <title>Para Sofía ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rosa-fondo: #ffeef2;
-            --rosa-sofia: #ffb7c5;
+            --rosa-brillante: #ff0055; /* Rosa vibrante */
             --rosa-fuerte: #ff4d6d;
+            --rosa-suave: #fff0f3;
+            --blanco: #ffffff;
         }
 
         body {
-            background-color: var(--rosa-fondo);
+            background-color: var(--rosa-suave);
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Evita scrolls inesperados */
-            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Contenedor de la carta cerrada */
-        .card-cover {
-            position: absolute;
-            background-color: var(--rosa-sofia);
-            color: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-            z-index: 10;
+        /* --- SOBRE CERRADO --- */
+        #envelope {
+            width: 90%;
+            max-width: 400px;
+            height: 300px;
+            background-color: var(--rosa-brillante);
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 80%;
-            max-width: 400px;
-            height: 60vh;
-            max-height: 500px;
-        }
-
-        .card-cover h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .card-cover p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Efecto de apertura */
-        .card-cover.open {
-            transform: scale(0.5) translateY(-200px); /* Se encoge y se mueve */
-            opacity: 0;
-            pointer-events: none; /* Ya no es clickeable */
-        }
-
-        /* Contenido de la carta abierta */
-        .card-content {
+            box-shadow: 0 15px 40px rgba(255, 0, 85, 0.4);
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
             position: relative;
-            background: white;
-            max-width: 800px;
-            margin: 20px;
+        }
+
+        #envelope:hover { transform: scale(1.05); }
+
+        #envelope h2 {
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            font-size: 2.8rem;
+            margin: 0;
+        }
+
+        #envelope p {
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* --- CARTA ABIERTA --- */
+        #main-content {
+            display: none;
+            width: 90%;
+            max-width: 700px;
+            background: var(--blanco);
             padding: 40px;
             border-radius: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
-            border: 1px solid var(--rosa-sofia);
-            opacity: 0; /* Empieza oculto */
-            transform: scale(0.8); /* Empieza encogido */
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-            z-index: 5;
-            display: none; /* Oculto por defecto */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 3px solid var(--rosa-brillante);
+            animation: slideUp 1s forwards;
         }
 
-        .card-content.show {
-            opacity: 1;
-            transform: scale(1);
-            display: block; /* Muestra el contenido */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: var(--rosa-fuerte);
-            font-size: 3rem;
-            margin-bottom: 20px;
+            color: var(--rosa-brillante);
+            font-size: 3.5rem;
+            margin-bottom: 10px;
         }
 
-        p {
-            color: #555;
+        .texto-carta {
+            color: #333;
             line-height: 1.8;
             font-size: 1.1rem;
-            margin-bottom: 15px;
         }
 
         .highlight {
-            color: var(--rosa-fuerte);
-            font-weight: 600;
-            font-size: 1.2rem;
+            color: var(--rosa-brillante);
+            font-weight: 700;
+            font-size: 1.3rem;
             display: block;
             margin: 20px 0;
+            padding: 10px;
+            border-top: 1px dashed var(--rosa-brillante);
+            border-bottom: 1px dashed var(--rosa-brillante);
         }
 
+        /* --- GALERÍA NÍTIDA --- */
         .gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -117,84 +109,97 @@
             margin-top: 30px;
         }
 
-        .foto-item {
+        .gallery img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 3px solid var(--rosa-fondo);
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            border: 3px solid var(--rosa-brillante);
+            transition: 0.3s;
         }
 
-        .foto-item:hover {
-            transform: scale(1.05);
-        }
+        .gallery img:hover { transform: scale(1.05); }
 
-        .footer-music {
-            background: var(--rosa-fuerte);
+        /* --- MÚSICA VIBRANTE --- */
+        .music-tag {
+            background: var(--rosa-brillante);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             margin-top: 30px;
             display: inline-block;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
         }
 
-        /* Media Queries para responsividad */
-        @media (max-width: 768px) {
-            .card-cover {
-                padding: 30px;
-                height: 50vh;
-            }
-            .card-cover h2 { font-size: 2.2rem; }
-            .card-cover p { font-size: 0.95rem; }
-            h1 { font-size: 2.5rem; }
-            p { font-size: 1rem; }
+        /* Corazones animados */
+        .heart {
+            position: fixed;
+            color: var(--rosa-brillante);
+            font-size: 20px;
+            z-index: -1;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
             .gallery { grid-template-columns: 1fr; }
-            .card-content { padding: 25px; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card-cover" id="cardCover">
-        <h2>Para ti, Sofía</h2>
-        <p>Un mensaje especial que se abrirá con un toque de magia... ✨</p>
-        <p style="font-size: 0.8em; margin-top: 20px;">(Haz clic para abrir)</p>
+    <div id="envelope" onclick="abrirCarta()">
+        <h2>Para Sofía</h2>
+        <p>TOCA PARA ABRIR ✨</p>
     </div>
 
-    <div class="card-content" id="cardContent">
-        <h1>Para Sofía ✨</h1>
-        <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla me recuerda que la distancia es solo un número cuando la conexión es real.</p>
-        
-        <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
-        
-        <span class="highlight">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</span>
-        
-        <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
-        
-        <div class="gallery">
-            <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" alt="Recuerdo 1" class="foto-item">
-            <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" alt="Recuerdo 2" class="foto-item">
-            <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" alt="Recuerdo 3" class="foto-item">
-            <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" alt="Recuerdo 4" class="foto-item">
+    <div id="main-content">
+        <h1>Hola Sofía ✨</h1>
+        <div class="texto-carta">
+            <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla es el recordatorio de que la distancia es solo un número cuando la conexión es real.</p>
+            
+            <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
+            
+            <span class="highlight">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</span>
+            
+            <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
         </div>
 
-        <div class="footer-music">
+        <div class="gallery">
+            <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" alt="Nosotros 1">
+            <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" alt="Nosotros 2">
+            <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" alt="Nosotros 3">
+            <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" alt="Nosotros 4">
+        </div>
+
+        <div class="music-tag">
             🎵 Everthemoon - The Marías
         </div>
     </div>
 
     <script>
-        const cardCover = document.getElementById('cardCover');
-        const cardContent = document.getElementById('cardContent');
+        function abrirCarta() {
+            document.getElementById('envelope').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            iniciarCorazones();
+        }
 
-        cardCover.addEventListener('click', () => {
-            cardCover.classList.add('open'); // Activa la animación de cierre de la portada
-            setTimeout(() => {
-                cardContent.classList.add('show'); // Muestra el contenido de la carta
-            }, 800); // Espera a que la portada se cierre un poco antes de mostrar el contenido
-        });
+        function iniciarCorazones() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
     </script>
 </body>
 </html>
