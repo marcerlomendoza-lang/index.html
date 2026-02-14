@@ -15,6 +15,11 @@
       overflow-x: hidden;
     }
 
+    /* Música de fondo (oculta) */
+    audio {
+      display: none;
+    }
+
     /* Corazones flotando */
     .heart-float {
       position: fixed;
@@ -77,19 +82,6 @@
       margin: 25px 0;
     }
 
-    .hint {
-      font-size: 0.95em;
-      color: #b94b7d;
-      margin-bottom: 15px;
-    }
-
-    iframe {
-      border-radius: 15px;
-      width: 100%;
-      height: 120px;
-      border: none;
-    }
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -119,14 +111,15 @@
 
 <body>
 
-  <!-- Carta -->
+  <!-- 🎶 Música de fondo (OCULTA) -->
+  <audio autoplay loop>
+    <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 💌 Carta -->
   <div class="card">
     <h1>Para Sofía 💕</h1>
     <div class="pulse-heart">💖💖💖</div>
-
-    <div class="hint">
-      ✨ Toca la carta para que suene la música ✨
-    </div>
 
     <div class="letter">
       Cariño,<br><br>
@@ -139,13 +132,6 @@
       Con mucho cariño,<br>
       <strong>Joshman 💗</strong>
     </div>
-
-    <h2>🎶 Nuestra música</h2>
-    <iframe
-      id="musicFrame"
-      src="https://screenapp.io/app/v/uzne9iFRFQ?autoplay=1"
-      allow="autoplay">
-    </iframe>
 
     <h2>📸 Nuestros momentos</h2>
     <div class="gallery">
@@ -160,20 +146,7 @@
     </footer>
   </div>
 
-  <!-- Música al primer clic -->
-  <script>
-    let started = false;
-
-    document.body.addEventListener("click", () => {
-      if (!started) {
-        const iframe = document.getElementById("musicFrame");
-        iframe.src = iframe.src;
-        started = true;
-      }
-    });
-  </script>
-
-  <!-- Corazones flotando -->
+  <!-- 💗 Corazones flotando -->
   <script>
     function createHeart() {
       const heart = document.createElement("div");
