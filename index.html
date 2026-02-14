@@ -124,7 +124,6 @@ p {
   max-width: 90%;
   max-height: 85%;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 #closeLightbox {
@@ -162,10 +161,10 @@ p {
 
   <!-- FOTOS -->
   <div class="gallery">
-    <img src="sofi.png" alt="Nuestro momento">
-    <img src="sofi2.png" alt="Nuestro momento">
-    <img src="sofi3.png" alt="Nuestro momento">
-    <img src="sofi4.png" alt="Nuestro momento">
+    <img src="./sofi.png" alt="">
+    <img src="./sofi2.png" alt="">
+    <img src="./sofi3.png" alt="">
+    <img src="./sofi4.png" alt="">
   </div>
 
   <p>
@@ -192,11 +191,9 @@ const music = document.getElementById("bgMusic");
 button.addEventListener("click", () => {
   music.volume = 0.5;
   music.play();
-
   overlay.style.opacity = "0";
   setTimeout(() => overlay.style.display = "none", 800);
   card.classList.add("show");
-
   setInterval(createHeart, 400);
 });
 
