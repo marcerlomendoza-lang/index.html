@@ -1,189 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Para Sofía 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Sofía 💗</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #ff9acb);
-      color: #5a0033;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+  overflow: hidden;
+}
 
-    /* Audio oculto */
-    audio {
-      display: none;
-    }
+/* Pantalla de inicio */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ffc1dc, #ffe6f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
 
-    /* Corazones flotando */
-    .heart-float {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp linear infinite;
-      opacity: 0.7;
-      pointer-events: none;
-    }
+#openBtn {
+  background: #ff8fbf;
+  color: white;
+  border: none;
+  padding: 20px 35px;
+  font-size: 1.2em;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: pulse 1.5s infinite;
+}
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 0.8;
-      }
-      to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-      }
-    }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
-    /* Carta que se abre */
-    .card {
-      max-width: 900px;
-      margin: 60px auto;
-      background: #fff0f7;
-      border-radius: 25px;
-      padding: 30px;
-      box-shadow: 0 20px 40px rgba(255, 105, 180, 0.35);
-      animation: openCard 1.2s ease forwards;
-      transform-origin: top;
-      transform: scaleY(0);
-    }
+/* Carta */
+#card {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1.2s ease;
+  max-width: 700px;
+  margin: 80px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+}
 
-    @keyframes openCard {
-      to { transform: scaleY(1); }
-    }
+#card.show {
+  opacity: 1;
+  transform: scale(1);
+}
 
-    h1 {
-      font-size: 2.5em;
-      color: #ff4fa3;
-    }
+h1 {
+  color: #ff5fa2;
+  text-align: center;
+}
 
-    .pulse-heart {
-      font-size: 2em;
-      animation: pulse 1.5s infinite;
-    }
+p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #555;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
+/* Corazones */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  color: #ff7eb3;
+  opacity: 0.8;
+}
 
-    .letter {
-      font-size: 1.15em;
-      line-height: 1.7;
-      margin: 25px 0;
-    }
-
-    .hint {
-      font-size: 0.95em;
-      color: #b94b7d;
-      margin-bottom: 15px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
-      transition: transform 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.9em;
-      color: #aa4b7a;
-    }
-  </style>
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- 🎶 Música de fondo (oculta, inicia al primer toque) -->
-  <audio id="bgMusic" loop>
-    <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
-  </audio>
+<!-- Audio oculto -->
+<audio id="bgMusic" loop>
+  <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- 💌 Carta -->
-  <div class="card">
-    <h1>Para Sofía 💕</h1>
-    <div class="pulse-heart">💖💖💖</div>
+<!-- Pantalla inicial -->
+<div id="overlay">
+  <button id="openBtn">💗 Toca para abrir la carta 💗</button>
+</div>
 
-    <div class="hint">
-      ✨ Toca la carta ✨
-    </div>
+<!-- Carta -->
+<div id="card">
+  <h1>Para Sofía 🌸</h1>
+  <p>
+    Cariño,<br><br>
+    Aunque la distancia nos separe, quiero que sepas que pienso en ti más de lo que imaginas.
+    Esta carta es pequeñita, pero está hecha con todo el cuidado del mundo,
+    solo para ti.
+    <br><br>
+    Me gusta lo que estamos construyendo, paso a paso, sin apuros.
+    Cada mensaje, cada risa, cada momento contigo significa mucho para mí.
+    <br><br>
+    Te quiero 💗
+    <br><br>
+    — Joshman
+  </p>
+</div>
 
-    <div class="letter">
-      Cariño,<br><br>
-      Tal vez no estemos cerca físicamente, pero cada día siento que te tengo un poquito más presente.
-      Me gusta cómo eres, cómo piensas y la forma tan especial en la que llegaste a mi vida.<br><br>
-      No quiero apresurar nada, solo decirte que te quiero, que me importas
-      y que me hace feliz compartir momentos contigo, incluso a la distancia.
-      Esta carta es solo un pequeño detalle para recordarte lo especial que eres para mí.<br><br>
-      Feliz San Valentín, Sofía 🌸<br><br>
-      Con mucho cariño,<br>
-      <strong>Joshman 💗</strong>
-    </div>
+<script>
+const overlay = document.getElementById("overlay");
+const button = document.getElementById("openBtn");
+const card = document.getElementById("card");
+const music = document.getElementById("bgMusic");
 
-    <h2>📸 Nuestros momentos</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/mhjlVoN.jpg">
-      <img src="https://i.imgur.com/i4NoIK5.jpg">
-      <img src="https://i.imgur.com/bsxWG04.jpg">
-      <img src="https://i.imgur.com/7ysh6vk.jpg">
-    </div>
+button.addEventListener("click", () => {
+  // Música
+  music.volume = 0.5;
+  music.play();
 
-    <footer>
-      Hecho con mucho cariño 💗
-    </footer>
-  </div>
+  // Animaciones
+  overlay.style.opacity = "0";
+  setTimeout(() => overlay.style.display = "none", 800);
+  card.classList.add("show");
 
-  <!-- ▶️ Script que inicia la música al primer toque -->
-  <script>
-    const music = document.getElementById("bgMusic");
+  // Corazones
+  setInterval(createHeart, 400);
+});
 
-    function startMusic() {
-      music.volume = 0.5; // volumen suave
-      music.play().catch(() => {});
-      document.removeEventListener("click", startMusic);
-      document.removeEventListener("touchstart", startMusic);
-    }
-
-    document.addEventListener("click", startMusic);
-    document.addEventListener("touchstart", startMusic);
-  </script>
-
-  <!-- 💗 Corazones flotando -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart-float");
-      heart.textContent = "💗";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 10000);
-    }
-
-    setInterval(createHeart, 700);
-  </script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+</script>
 
 </body>
 </html>
