@@ -87,6 +87,7 @@ p {
   border-radius: 18px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   transition: transform 0.4s ease;
+  cursor: pointer;
 }
 
 .gallery img:hover {
@@ -107,12 +108,39 @@ p {
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-110vh); opacity: 0; }
 }
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+#closeLightbox {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Música de fondo -->
+<!-- Música -->
 <audio id="bgMusic" loop>
   <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
 </audio>
@@ -130,7 +158,6 @@ p {
     Cariño,<br><br>
     Aunque la distancia nos separe, quería regalarte algo especial.
     Algo que puedas abrir y sentir cerquita.
-    Cada parte de esta carta está hecha pensando en ti.
   </p>
 
   <!-- FOTOS -->
@@ -143,12 +170,17 @@ p {
 
   <p>
     Me gusta esto que tenemos, sin apuros, siendo nosotros.
-    Gracias por cada mensaje, cada sonrisa y cada momento compartido.
     <br><br>
     Te quiero 💗
     <br><br>
     — Joshman
   </p>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <span id="closeLightbox">×</span>
+  <img id="lightboxImg">
 </div>
 
 <script>
@@ -177,6 +209,29 @@ function createHeart() {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 6000);
 }
+
+/* Lightbox JS */
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const closeLightbox = document.getElementById("closeLightbox");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.style.display = "flex";
+  });
+});
+
+closeLightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
 </script>
 
 </body>
