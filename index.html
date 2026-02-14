@@ -3,123 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Sofía ✨</title>
+    <title>Para Sofía | San Valentín ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --rosa-claro: #ffe4ec;
-            --rosa-sofia: #ffb7c5; /* Su color favorito */
+            --rosa-fondo: #ffeef2;
+            --rosa-sofia: #ffb7c5;
             --rosa-fuerte: #ff4d6d;
         }
 
         body {
-            background-color: var(--rosa-claro);
+            background-color: var(--rosa-fondo);
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
 
-        .carta-container {
-            position: relative;
+        /* Galería de Alta Definición */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 900px;
+            margin-top: 30px;
+        }
+
+        .foto-item {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+            border: 4px solid white;
+        }
+
+        .foto-item:hover {
+            transform: scale(1.03);
+            z-index: 2;
+        }
+
+        /* Carta de Texto */
+        .carta {
             background: white;
+            max-width: 600px;
+            margin: 40px 20px;
             padding: 40px;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
-            max-width: 500px;
             text-align: center;
-            border: 2px solid var(--rosa-sofia);
-            z-index: 5;
+            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.15);
+            border: 1px solid var(--rosa-sofia);
         }
 
-        /* Fotos de Roblox en las esquinas */
-        .foto-roblox {
-            position: absolute;
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border: 6px solid white;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .foto-roblox:hover { transform: scale(1.1) rotate(0deg); z-index: 10; }
-
-        /* Ubicaciones exactas */
-        .f1 { top: -70px; left: -70px; transform: rotate(-12deg); }
-        .f2 { top: -70px; right: -70px; transform: rotate(12deg); }
-        .f3 { bottom: -70px; left: -70px; transform: rotate(8deg); }
-        .f4 { bottom: -70px; right: -70px; transform: rotate(-8deg); }
-
-        h1 { color: var(--rosa-fuerte); font-size: 2rem; margin-bottom: 15px; }
-        p { color: #4a4a4a; line-height: 1.6; font-size: 1.05rem; margin-bottom: 15px; }
-        
-        .destaque {
+        h1 {
+            font-family: 'Dancing Script', cursive;
             color: var(--rosa-fuerte);
-            font-weight: bold;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--rosa-fuerte);
+            font-weight: 600;
+            font-size: 1.2rem;
             display: block;
-            margin-top: 10px;
+            margin: 20px 0;
         }
 
-        .cancion {
+        .footer-music {
+            background: var(--rosa-fuerte);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
             margin-top: 20px;
-            padding: 10px;
-            background: var(--rosa-claro);
-            border-radius: 15px;
-            font-size: 0.85rem;
-            color: var(--rosa-fuerte);
+            display: inline-block;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
-        /* Corazones flotantes de fondo */
-        .heart {
-            position: absolute;
+        /* Corazones flotantes decorativos */
+        .floating-heart {
+            position: fixed;
             color: var(--rosa-sofia);
-            opacity: 0.5;
-            z-index: 1;
-            animation: float 6s infinite ease-in;
+            font-size: 20px;
+            user-select: none;
+            z-index: -1;
+            animation: move 10s linear infinite;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        @keyframes move {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-10vh) rotate(360deg); }
         }
 
         @media (max-width: 600px) {
-            .foto-roblox { width: 90px; height: 90px; }
-            .f1 { top: -40px; left: -20px; }
-            .f2 { top: -40px; right: -20px; }
-            .f3 { bottom: -40px; left: -20px; }
-            .f4 { bottom: -40px; right: -20px; }
-            .carta-container { width: 80%; padding: 30px; }
+            .gallery { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .carta { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="carta-container">
-        <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" class="foto-roblox f1">
-        <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" class="foto-roblox f2">
-        <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" class="foto-roblox f3">
-        <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" class="foto-roblox f4">
+    <div class="gallery">
+        <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" alt="Recuerdo 1" class="foto-item">
+        <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" alt="Recuerdo 2" class="foto-item">
+        <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" alt="Recuerdo 3" class="foto-item">
+        <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" alt="Recuerdo 4" class="foto-item">
+    </div>
 
-        <h1>Para: Sofía ✨</h1>
-        
-        <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla es el recordatorio de que la distancia es solo un número cuando la conexión es real.</p>
+    <div class="carta">
+        <h1>Para Sofía ✨</h1>
+        <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla me recuerda que la distancia es solo un número cuando la conexión es real.</p>
         
         <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
         
-        <p class="destaque">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</p>
+        <span class="highlight">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</span>
         
         <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
         
-        <div class="cancion">
-            🎵 <i>"And every time the moon shines bright... I'll think of you."</i><br>
-            <b>Everthemoon - The Marías</b>
+        <div class="footer-music">
+            🎵 Everthemoon - The Marías
         </div>
     </div>
 
+    <script>
+        // Crear corazones animados
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+        setInterval(createHeart, 500);
+    </script>
 </body>
 </html>
