@@ -12,15 +12,47 @@
       background: linear-gradient(135deg, #ffd6e8, #ff9acb);
       color: #5a0033;
       text-align: center;
+      overflow-x: hidden;
     }
 
+    /* Corazones flotando */
+    .heart-float {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Carta */
     .card {
       max-width: 900px;
-      margin: 40px auto;
+      margin: 60px auto;
       background: #fff0f7;
       border-radius: 25px;
       padding: 30px;
       box-shadow: 0 20px 40px rgba(255, 105, 180, 0.35);
+      animation: openCard 1.2s ease forwards;
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+
+    @keyframes openCard {
+      to {
+        transform: scaleY(1);
+      }
     }
 
     h1 {
@@ -28,7 +60,7 @@
       color: #ff4fa3;
     }
 
-    .heart {
+    .pulse-heart {
       font-size: 2em;
       animation: pulse 1.5s infinite;
     }
@@ -87,22 +119,24 @@
 
 <body>
 
+  <!-- Carta -->
   <div class="card">
     <h1>Para Sofía 💕</h1>
-    <div class="heart">💖💖💖</div>
+    <div class="pulse-heart">💖💖💖</div>
 
     <div class="hint">
       ✨ Toca la carta para que suene la música ✨
     </div>
 
     <div class="letter">
-      Cariño<br><br>
-      Aunque la distancia intente separarnos, mi corazón siempre encuentra el camino hacia ti.
-      Cada día que pasa pienso en tu sonrisa, en tu voz y en todo lo hermoso que eres.
-      Esta carta es solo una pequeña prueba de cuánto te quiero y de lo importante que eres para mí.<br><br>
-      Gracias por existir, por elegirme y por hacer que incluso los días lejanos se sientan cerca.
-      Feliz San Valentín, mi Sofía hermosa. 🌸<br><br>
-      Con todo mi amor,<br>
+      Cariño,<br><br>
+      Tal vez no estemos cerca físicamente, pero cada día siento que te tengo un poquito más presente.
+      Me gusta cómo eres, cómo piensas y la forma tan especial en la que llegaste a mi vida.<br><br>
+      No quiero apresurar nada, solo decirte que te quiero, que me importas
+      y que me hace feliz compartir momentos contigo, incluso a la distancia.
+      Esta carta es solo un pequeño detalle para recordarte lo especial que eres para mí.<br><br>
+      Feliz San Valentín, Sofía 🌸<br><br>
+      Con mucho cariño,<br>
       <strong>Joshman 💗</strong>
     </div>
 
@@ -122,10 +156,11 @@
     </div>
 
     <footer>
-      Hecho con amor solo para ti 💗
+      Hecho con mucho cariño 💗
     </footer>
   </div>
 
+  <!-- Música al primer clic -->
   <script>
     let started = false;
 
@@ -136,6 +171,24 @@
         started = true;
       }
     });
+  </script>
+
+  <!-- Corazones flotando -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart-float");
+      heart.innerText = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 700);
   </script>
 
 </body>
