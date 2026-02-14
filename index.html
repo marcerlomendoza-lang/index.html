@@ -1,233 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Sofía ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --rosa-vibrante: #ff006e; /* Fucsia vivo */
-            --rosa-neon: #ff5c8a;
-            --blanco-puro: #ffffff;
-            --fondo: #fff0f3;
-        }
+  <meta charset="UTF-8">
+  <title>Para Sofía 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: var(--fondo);
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #ff9acb);
+      color: #5a0033;
+      text-align: center;
+    }
 
-        /* SOBRE CERRADO (VIBRANTE) */
-        #envelope {
-            width: 90%;
-            max-width: 420px;
-            height: 280px;
-            background: linear-gradient(135deg, var(--rosa-vibrante), var(--rosa-neon));
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 20px 50px rgba(255, 0, 110, 0.4);
-            cursor: pointer;
-            transition: all 0.5s ease;
-            z-index: 10;
-            border: 4px solid var(--blanco-puro);
-        }
+    .card {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff0f7;
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(255, 105, 180, 0.35);
+    }
 
-        #envelope:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(255, 0, 110, 0.5);
-        }
+    h1 {
+      font-size: 2.5em;
+      color: #ff4fa3;
+    }
 
-        #envelope h2 {
-            font-family: 'Dancing Script', cursive;
-            color: var(--blanco-puro);
-            font-size: 3.5rem;
-            margin: 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-        }
+    .heart {
+      font-size: 2em;
+      animation: pulse 1.5s infinite;
+    }
 
-        #envelope p {
-            color: var(--blanco-puro);
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-top: 15px;
-            animation: pulse 1.5s infinite;
-        }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
 
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
+    .letter {
+      font-size: 1.15em;
+      line-height: 1.7;
+      margin: 25px 0;
+    }
 
-        /* CARTA ABIERTA */
-        #main-content {
-            display: none;
-            width: 95%;
-            max-width: 750px;
-            background: var(--blanco-puro);
-            padding: 50px 30px;
-            border-radius: 40px;
-            text-align: center;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-            border: 4px solid var(--rosa-vibrante);
-            animation: fadeIn 1s ease-out;
-            margin: 20px;
-        }
+    .music {
+      margin: 30px 0;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+    iframe {
+      border-radius: 15px;
+      width: 100%;
+      height: 120px;
+      border: none;
+    }
 
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            color: var(--rosa-vibrante);
-            font-size: 4rem;
-            margin: 0 0 20px 0;
-        }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
 
-        .mensaje {
-            color: #2b2b2b;
-            line-height: 1.8;
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+      transition: transform 0.3s;
+    }
 
-        .highlight {
-            color: var(--rosa-vibrante);
-            font-weight: 700;
-            font-size: 1.4rem;
-            display: block;
-            margin: 25px 0;
-            padding: 15px;
-            background: var(--fondo);
-            border-radius: 15px;
-            border-left: 5px solid var(--rosa-vibrante);
-        }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
 
-        /* GALERÍA DE IMÁGENES */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 20px;
-            border: 4px solid var(--rosa-neon);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: 0.4s;
-            cursor: zoom-in;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
-
-        /* FOOTER MÚSICA */
-        .music-bar {
-            background: var(--rosa-vibrante);
-            color: var(--blanco-puro);
-            padding: 15px 40px;
-            border-radius: 50px;
-            margin-top: 40px;
-            display: inline-block;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(255, 0, 110, 0.3);
-        }
-
-        /* CORAZONES FLOTANTES */
-        .heart {
-            position: fixed;
-            color: var(--rosa-neon);
-            font-size: 25px;
-            z-index: -1;
-            animation: floatUp 6s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
-        }
-
-        @media (max-width: 600px) {
-            .gallery { grid-template-columns: 1fr; }
-            h1 { font-size: 3rem; }
-            #envelope { height: 220px; }
-        }
-    </style>
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #aa4b7a;
+    }
+  </style>
 </head>
+
 <body>
 
-    <div id="envelope" onclick="abrirCarta()">
-        <h2>Para Sofía</h2>
-        <p>HAZ CLIC AQUÍ ✨</p>
+  <div class="card">
+    <h1>Para Sofía 💕</h1>
+    <div class="heart">💖💖💖</div>
+
+    <div class="letter">
+      Mi amor,<br><br>
+      Aunque la distancia intente separarnos, mi corazón siempre encuentra el camino hacia ti.
+      Cada día que pasa pienso en tu sonrisa, en tu voz y en todo lo hermoso que eres.
+      Esta carta es solo una pequeña prueba de cuánto te amo y de lo importante que eres para mí.<br><br>
+      Gracias por existir, por elegirme y por hacer que incluso los días lejanos se sientan cerca.
+      Feliz San Valentín, mi Sofía hermosa. 🌸<br><br>
+      Con todo mi amor,<br>
+      <strong>Oscar 💗</strong>
     </div>
 
-    <div id="main-content">
-        <h1>Para Sofía ✨</h1>
-        <div class="mensaje">
-            <p>Aunque nos separan los kilómetros, estos momentos son mis favoritos del día. Verte en mi pantalla es el recordatorio de que la distancia es solo un número cuando la conexión es real.</p>
-            
-            <p>Te estoy conociendo y cada detalle de ti me encanta. Por eso, hoy quiero ser honesto contigo:</p>
-            
-            <span class="highlight">No solo quiero pasar el rato, quiero construir algo estable a tu lado. ❤️</span>
-            
-            <p>Sé que el camino a distancia tiene sus retos, pero estoy más que dispuesto a lograrlos contigo. Eres mi persona favorita.</p>
-        </div>
-
-        <div class="gallery">
-            <img src="https://i.postimg.cc/pyFSjzrh/sofi.png" alt="Momento 1">
-            <img src="https://i.postimg.cc/3dQcFN0D/sofi2.png" alt="Momento 2">
-            <img src="https://i.postimg.cc/GHn5xtTT/sofi3.png" alt="Momento 3">
-            <img src="https://i.postimg.cc/QHZyJCKT/sofi4.png" alt="Momento 4">
-        </div>
-
-        <div class="music-bar">
-            🎵 Escuchando: Everthemoon - The Marías
-        </div>
+    <div class="music">
+      <h2>🎶 Nuestra música</h2>
+      <iframe src="https://screenapp.io/app/v/uzne9iFRFQ"></iframe>
     </div>
 
-    <script>
-        function abrirCarta() {
-            // Animación de salida del sobre
-            const envelope = document.getElementById('envelope');
-            envelope.style.transform = 'scale(0) rotate(10deg)';
-            envelope.style.opacity = '0';
-            
-            setTimeout(() => {
-                envelope.style.display = 'none';
-                const content = document.getElementById('main-content');
-                content.style.display = 'block';
-                iniciarLluviaCorazones();
-            }, 500);
-        }
+    <h2>📸 Nuestros momentos</h2>
+    <div class="gallery">
+      <!-- IMPORTANTE: usa links directos de imgur (i.imgur.com/ID.jpg) -->
+      <img src="https://i.imgur.com/mhjlVoN.jpg">
+      <img src="https://i.imgur.com/i4NoIK5.jpg">
+      <img src="https://i.imgur.com/bsxWG04.jpg">
+      <img src="https://i.imgur.com/7ysh6vk.jpg">
+    </div>
 
-        function iniciarLluviaCorazones() {
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 6000);
-            }, 400);
-        }
-    </script>
+    <footer>
+      Hecho con amor para ti 💗
+    </footer>
+  </div>
+
 </body>
 </html>
