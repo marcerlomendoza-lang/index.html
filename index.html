@@ -15,7 +15,7 @@
       overflow-x: hidden;
     }
 
-    /* Música de fondo (oculta) */
+    /* Audio oculto */
     audio {
       display: none;
     }
@@ -41,7 +41,7 @@
       }
     }
 
-    /* Carta */
+    /* Carta que se abre */
     .card {
       max-width: 900px;
       margin: 60px auto;
@@ -55,9 +55,7 @@
     }
 
     @keyframes openCard {
-      to {
-        transform: scaleY(1);
-      }
+      to { transform: scaleY(1); }
     }
 
     h1 {
@@ -80,6 +78,12 @@
       font-size: 1.15em;
       line-height: 1.7;
       margin: 25px 0;
+    }
+
+    .hint {
+      font-size: 0.95em;
+      color: #b94b7d;
+      margin-bottom: 15px;
     }
 
     .gallery {
@@ -111,8 +115,8 @@
 
 <body>
 
-  <!-- 🎶 Música de fondo (OCULTA) -->
-  <audio autoplay loop>
+  <!-- 🎶 Música de fondo (oculta, inicia al primer toque) -->
+  <audio id="bgMusic" loop>
     <source src="the-marias-over-the-moon_W0WNQZiG.mp3" type="audio/mpeg">
   </audio>
 
@@ -120,6 +124,10 @@
   <div class="card">
     <h1>Para Sofía 💕</h1>
     <div class="pulse-heart">💖💖💖</div>
+
+    <div class="hint">
+      ✨ Toca la carta ✨
+    </div>
 
     <div class="letter">
       Cariño,<br><br>
@@ -146,19 +154,32 @@
     </footer>
   </div>
 
+  <!-- ▶️ Script que inicia la música al primer toque -->
+  <script>
+    const music = document.getElementById("bgMusic");
+
+    function startMusic() {
+      music.volume = 0.5; // volumen suave
+      music.play().catch(() => {});
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    }
+
+    document.addEventListener("click", startMusic);
+    document.addEventListener("touchstart", startMusic);
+  </script>
+
   <!-- 💗 Corazones flotando -->
   <script>
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart-float");
-      heart.innerText = "💗";
+      heart.textContent = "💗";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = (5 + Math.random() * 5) + "s";
       document.body.appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
+      setTimeout(() => heart.remove(), 10000);
     }
 
     setInterval(createHeart, 700);
