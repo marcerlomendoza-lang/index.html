@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Para Lili 💖</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -14,7 +13,7 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #ffd6e8, #fff0f5);
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         .carta {
@@ -29,30 +28,12 @@
 
         h2 {
             color: #e75480;
-            margin-bottom: 15px;
         }
 
         p {
             color: #444;
             line-height: 1.6;
             font-size: 16px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            font-size: 16px;
-            background: #e75480;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        button:hover {
-            background: #d6456d;
-            transform: scale(1.05);
         }
 
         footer {
@@ -64,9 +45,9 @@
 </head>
 <body>
 
-    <!-- Botón de música -->
-    <audio id="musica" loop>
-        <source src="jojimusci.mp3" type="audio/mpeg">
+    <!-- AUDIO DEFINITIVO -->
+    <audio controls loop preload="auto">
+        <source src="./jojimusci.mp3" type="audio/mpeg">
         Tu navegador no soporta audio.
     </audio>
 
@@ -77,15 +58,11 @@
             Querida Lili,<br><br>
             En este San Valentín quiero recordarte lo valiosa que eres para mí.
             Gracias por tu amistad, por las risas y los momentos compartidos.<br><br>
-            Que esta pequeña carta te recuerde que tienes un lugar especial
+            Que esta carta te recuerde que tienes un lugar especial
             en mi corazón como amiga. 🌸<br><br>
             Con cariño,<br>
-            <strong>Oscar</strong>
+            <strong>Joshman</strong>
         </p>
-
-        <button onclick="document.getElementById('musica').play()">
-            🎵 Reproducir música
-        </button>
 
         <footer>
             Hecho con cariño 💖
