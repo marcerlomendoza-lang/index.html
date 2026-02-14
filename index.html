@@ -1,1 +1,407 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lili ❤️ 70 días de amistad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Portada */
+        .cover {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+        }
+
+        .cover h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .cover h2 {
+            font-size: 1.8em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .heart-icon {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f3ec78, #af4261);
+            padding: 5px;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        /* Secciones */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .section h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        /* Timeline de momentos */
+        .moment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .moment-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .moment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .moment-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .moment-day {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .moment-desc {
+            color: #666;
+        }
+
+        /* Lista de aprendizajes */
+        .learnings-list {
+            list-style: none;
+        }
+
+        .learnings-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #4ecdc4;
+            font-size: 1.1em;
+        }
+
+        /* Próximas aventuras */
+        .adventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .adventure-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 2px dashed #96ceb4;
+        }
+
+        .adventure-item span {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        /* Sección final */
+        .final-message {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .final-message p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .cover h1 {
+                font-size: 2em;
+            }
+            
+            .cover h2 {
+                font-size: 1.5em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Portada -->
+        <div class="cover">
+            <div class="heart-icon">💖</div>
+            <h1>Querida Lili,</h1>
+            <h2>¡70 días de amistad!</h2>
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    📸
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #666;">
+                ¿Puedes creerlo? Han pasado 70 días desde que el universo decidió que teníamos que ser amigas.<br>
+                70 días atrás, éramos dos desconocidas. Hoy, no me imagino mis días sin nuestras charlas.<br>
+                Para celebrar este pequeño gran viaje, te he preparado este mapa de nuestros primeros 70 pasos. ¡Ábrelo!
+            </p>
+        </div>
+
+        <!-- 70 Días, 70 Momentos -->
+        <div class="section">
+            <h3>✨ 70 Días, 70 Momentos ✨</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                Una selección de nuestros momentos favoritos
+            </p>
+            <div class="moment-grid">
+                <div class="moment-card">
+                    <div class="moment-icon">👋</div>
+                    <div class="moment-day">Día 1</div>
+                    <div class="moment-desc">El día que nos conocimos. Esa sonrisa que lo empezó todo.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">💬</div>
+                    <div class="moment-day">Día 7</div>
+                    <div class="moment-desc">Nuestra primera conversación larga. Descubrimos que nos gustaban las mismas canciones.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">😂</div>
+                    <div class="moment-day">Día 15</div>
+                    <div class="moment-desc">El primer chiste interno. Del que aún nos reímos sin saber muy bien por qué.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">🤝</div>
+                    <div class="moment-day">Día 30</div>
+                    <div class="moment-desc">Cuando nos dimos cuenta de que éramos cómplices. Ese momento en que todo cambió.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">🎂</div>
+                    <div class="moment-day">Día 45</div>
+                    <div class="moment-desc">Celebramos algo pequeño como si fuera enorme. Porque juntas, todo es especial.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">🌙</div>
+                    <div class="moment-day">Día 60</div>
+                    <div class="moment-desc">Esa conversación nocturna que duró hasta el amanecer. Secretos y confesiones.</div>
+                </div>
+                <div class="moment-card">
+                    <div class="moment-icon">🎁</div>
+                    <div class="moment-day">Día 70</div>
+                    <div class="moment-desc">Hoy. Celebrando estos 70 días y planeando los 70.000 que vienen.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ¿Qué hemos aprendido en 70 días? -->
+        <div class="section">
+            <h3>📝 ¿Qué hemos aprendido en 70 días?</h3>
+            <ul class="learnings-list">
+                <li>Que te ríes más fuerte cuando estás conmigo, y eso se ha vuelto mi sonido favorito.</li>
+                <li>Que tu consejo favorito para todo es "échale ganas", y siempre tienes razón.</li>
+                <li>Que juntas, hasta hacer la compra se convierte en una aventura épica.</li>
+                <li>Que 70 días contigo saben a poco, pero han sido los mejores 70 días.</li>
+                <li>Que la amistad verdadera no necesita años, solo conexión. Y nosotros la tenemos.</li>
+            </ul>
+        </div>
+
+        <!-- Próximas paradas -->
+        <div class="section">
+            <h3>🗺️ Próximas paradas: Las próximas 70 aventuras</h3>
+            <div class="adventures-grid">
+                <div class="adventure-item">
+                    <span>🎬</span>
+                    Ver esa película que tanto queremos
+                </div>
+                <div class="adventure-item">
+                    <span>🍦</span>
+                    Ir a tomar el helado más grande de la ciudad
+                </div>
+                <div class="adventure-item">
+                    <span>📸</span>
+                    Nuestra primera foto de "amigas en pijama"
+                </div>
+                <div class="adventure-item">
+                    <span>🌟</span>
+                    Seguir sumando días, risas y secretos
+                </div>
+                <div class="adventure-item">
+                    <span>✈️</span>
+                    Planear ese viaje del que tanto hablamos
+                </div>
+                <div class="adventure-item">
+                    <span>🎂</span>
+                    Celebrar tu cumpleaños como se merece
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje final -->
+        <div class="section final-message">
+            <h3 style="color: white; border-bottom-color: rgba(255,255,255,0.3);">💌 Gracias por estos 70 días 💌</h3>
+            <p>
+                Lili, gracias por estos 70 días. Por abrirme un espacio en tu vida<br>
+                y dejarme compartir el mío contigo. Esto es solo el principio.<br>
+                Espero que esta cartita virtual te haya sacado una sonrisa,<br>
+                tan grande como las que me sacas tú a diario.
+            </p>
+            <div class="signature">
+                [Tu nombre]
+            </div>
+            <p style="font-size: 0.9em;">
+                14 de Febrero de 2026
+            </p>
+            <button class="btn" onclick="celebrar()">
+                ¡A por los próximos 70 días! 🎉
+            </button>
+            <div id="celebracion" style="margin-top: 20px; font-size: 2em; display: none;">
+                🎊🎈🎉 ¡Por muchos más! 🎉🎈🎊
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Hecho con ❤️ para Lili, en celebración de 70 días de amistad
+        </div>
+    </div>
+
+    <script>
+        function celebrar() {
+            document.getElementById('celebracion').style.display = 'block';
+            document.getElementById('celebracion').style.animation = 'fadeIn 1s';
+            
+            // Confeti simple
+            for(let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    alert('🎊 ¡Felices 70 días! 🎊');
+                }, 100);
+            }
+        }
+
+        // Cambiar el placeholder de la foto por una imagen real
+        // Para poner una foto real, reemplaza el div con clase "photo-placeholder" por:
+        // <img src="tu-foto.jpg" alt="Lili y yo" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+    </script>
+</body>
+</html>
